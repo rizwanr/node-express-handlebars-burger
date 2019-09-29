@@ -6,29 +6,39 @@ $(function () {
       name: $("#textarea_burger").val().trim(),
       devoured: 0
     }
-    $.ajax("/api/burgers", {
-      type: "POST",
-      data: newBurger
-    }).then(
-      function () {
-        console.log("created new new Burger");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+    if (newBurger.name) {
+      //ajax post
+      $.ajax("/api/burgers", {
+        type: "POST",
+        data: newBurger
+      }).then(
+        function () {
+          console.log("created new new Burger");
+          // Reload the page to get the updated list
+          location.reload();
+        }
+      );
+    } else {
+      $("#error-message").html('Please add the name of the burger you want to eat');
+      $("#textarea_burger").keypress(function () {
+        $("#error-message").empty()
+      });
+    }
 
   })
 
   $(".devour-button").on("click", function (event) {
     event.preventDefault();
+
     var id = $(this).data("id");
+
 
 
     var newDevourState = {
       devoured: 1
 
     };
-
+    //ajax update
     $.ajax("/api/burgers/" + id, {
       type: "PUT",
       data: newDevourState
@@ -40,6 +50,20 @@ $(function () {
       }
     );
   });
+
+  $('.delete-button').on('click', function (event) {
+    event.preventDefault()
+    var id = $(this).data("id");
+    console.log('id to delete' + id)
+
+    $.ajax("/api/burgers/" + id, {
+      type: "DELETE"
+    }).then(function () {
+      console.log('deleted burger', id)
+      location.reload();
+    })
+
+  })
 
 
 

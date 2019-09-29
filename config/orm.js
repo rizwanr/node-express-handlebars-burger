@@ -83,6 +83,28 @@ var orm = {
     });
   },
 
+  delete: function (table, condition, cb) {
+    var queryString = "DELETE FROM " + table;
+    queryString += " WHERE ";
+    queryString += condition;
+
+    connection.query(queryString, function (err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
+
+
+
+
+
+  //delete  FROM chirpy.chirps where id in (1, 2)
+
+
+
 };
 
 // Export the orm object for the model (cat.js).
