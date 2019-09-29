@@ -1,25 +1,50 @@
 <img src="/assets/img/burger.png" width="150px">
+<section>
+  <h1>Eat-Da-Burger!</h1>
+  <form>
+    <div class="form-group">
 
-<h1>Eat-Da-Burger!</h1>
-<form>
-  <div class="form-group">
+      <textarea rows="4" cols="50" id="textarea_burger"></textarea>
+    </div>
+  </form>
+  <button type="submit" id="submit_burger">Submit</button>
+</section>
+<h4 class="mt-4 mb-5">Enter a burger you want to eat. Click the "Submit" button</h4>
+<div class="row">
 
-    <textarea rows="4" cols="50" id="textarea"></textarea>
+  <!-- Left side (Burgers Available) -->
+  <div class="col-md-6">
+    <h3 class="submitFont">Burgers Available</h3>
+    <div id="burgersAvailable">
+      <!-- Dynamically Add User Burgers Here -->
+      {{#each burger}} {{#unless devoured}}
+      <div class="input-group">
+        <li class="form-control">{{id}}. {{name}}</li>
+        <span class="input-group-btn">
+          <button class="btn btn-success devour-button" data-id="{{id}}" type="submit ">Devour It!</button>
+        </span>
+      </div>
+
+      {{/unless}} {{/each}}
+
+    </div>
   </div>
-</form>
-<button type="submit">Submit</button>
-<div>Enter a burger you want to eat.Click the "Submit" button</div>
 
-<h2>Burger</h2>
 
-{{#each burger}} {{#if devoured}}
-<p>Name: {{name}}</p>
-<p>devoured: ${{devoured}}</p>
-{{/if}}
 
-<hr> {{/each}} {{!--
-<h2>Cats that are sleepy!</h2>
+  <!-- Right side (Burgers Devoured) -->
+  <div class="col-md-6">
+    <h3 class="submitFont ">Burgers Devoured</h3>
+    <div id="alreadyEaten ">
 
-<ul>
-  {{#each cats}} {{#if sleepy}} {{> cats/cat-block sleep=false}} {{/if}} {{/each}}
-</ul> --}}
+      <!-- Dynamically Insert Devoured Burgers Here -->
+      {{#each burger}} {{#if this.devoured}}
+      <div class="input-group ">
+        <li class="form-control ">{{id}}. {{name}}</li>
+      </div>
+      {{/if}} {{/each}}
+
+    </div>
+  </div>
+
+</div>
