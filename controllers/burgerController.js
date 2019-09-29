@@ -17,14 +17,39 @@ router.get("/", function (req, res) {
 });
 
 router.post("/api/burgers", function (req, res) {
+  console.log(req.body)
+  /*
+  Tested in postman
+  {
+              "name": "Tuna burger",
+              "devoured": 0
+  } 
+
+  Result from 
+  {
+      "result": {
+          "fieldCount": 0,
+          "affectedRows": 1,
+          "insertId": 7,
+          "serverStatus": 2,
+          "warningCount": 0,
+          "message": "",
+          "protocol41": true,
+          "changedRows": 0
+      }
+  }
+
+  */
+
+
   burger.create([
-    "name", "sleepy"
+    "name", "devoured"
   ], [
-    req.body.name, req.body.sleepy
+    req.body.name, req.body.devoured
   ], function (result) {
     // Send back the ID of the new quote
     res.json({
-      id: result.insertId
+      result
     });
   });
 });

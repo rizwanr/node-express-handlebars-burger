@@ -9,3 +9,17 @@
 </form>
 <button type="submit">Submit</button>
 <div>Enter a burger you want to eat.Click the "Submit" button</div>
+
+<h2>Burger</h2>
+
+{{#each burger}} {{#if devoured}}
+<p>Name: {{name}}</p>
+<p>devoured: ${{devoured}}</p>
+{{/if}}
+
+<hr> {{/each}} {{!--
+<h2>Cats that are sleepy!</h2>
+
+<ul>
+  {{#each cats}} {{#if sleepy}} {{> cats/cat-block sleep=false}} {{/if}} {{/each}}
+</ul> --}}
