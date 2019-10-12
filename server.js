@@ -1,11 +1,9 @@
 
-const path = require('path');
-
 var express = require("express");
+var path = require('path');
 var exphbs = require("express-handlebars");
 
 var app = express();
-
 
 
 // Parse application body as JSON
@@ -13,8 +11,6 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(express.json());
-
-
 
 
 // Make use of the body-parsers
