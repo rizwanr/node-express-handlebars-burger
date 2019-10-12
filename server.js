@@ -5,8 +5,8 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 
 var app = express();
-// Serve static content for the app from the "public" directory in the application directory.pp.use(express.static("public"));
-app.use(express.static("public"));
+
+
 
 // Parse application body as JSON
 app.use(express.urlencoded({
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Set static directory reference path
+// Set static directory reference path- // Serve static content for the app from the "public" directory in the application directory.pp.use(express.static("public"));
 app.use(express.static(path.join(__dirname, 'public'))); 
 
 // Set Handlebars.
