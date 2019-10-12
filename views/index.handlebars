@@ -1,6 +1,13 @@
-<img src="/assets/img/burger.png" width="150px">
+
+<div class="jumbotron jumbotron-fluid mb-0">
+  <div class="container">
+    <h1 class="display-4">Eat-Da-Burger!</h1>
+  <h4 class="mt-4 mb-5">Enter a burger you want to eat. Click the "Submit" button</h4>
+  </div>
+</div>
 <section>
-  <h1>Eat-Da-Burger!</h1>
+  <img src="/assets/img/burger.png" width="150px" >
+
   <form>
     <div class="form-group">
 
@@ -11,10 +18,13 @@
   <button type="submit" id="submit_burger">Submit</button>
 
 </section>
-<h4 class="mt-4 mb-5">Enter a burger you want to eat. Click the "Submit" button</h4>
+
+<div class="container">
 <div class="row">
 
   <!-- Left side (Burgers Available) -->
+
+
   <div class="col-md-6">
     <h3 class="submitFont">Burgers Available</h3>
     <div id="burgersAvailable">
@@ -22,7 +32,7 @@
       {{#each burger}} {{#unless devoured}}
       <div class="input-group">
         <button class="btn btn-danger delete-button" data-id="{{id}}" type="submit ">Delete It!</button>
-        <li class="form-control">{{id}}. {{name}}</li>
+        <li class="form-control col-xs-4" >{{id}}. {{name}}</li>
 
         <span class="input-group-btn">
           <button class="btn btn-success devour-button" data-id="{{id}}" type="submit ">Devour It!</button>
@@ -36,7 +46,9 @@
 
 
 
+
   <!-- Right side (Burgers Devoured) -->
+ 
   <div class="col-md-6">
     <h3 class="submitFont ">Burgers Devoured</h3>
     <div id="alreadyEaten ">
@@ -45,12 +57,17 @@
       {{#each burger}} {{#if devoured}}
       <div class="input-group ">
         <li class="form-control ">{{id}}. {{name}}</li>
+        <button class="btn btn-danger delete-button" data-id="{{id}}" type="submit ">Delete It!</button>
       </div>
+
       {{/if}} {{/each}}
 
     </div>
   </div>
-
-
-
 </div>
+</div>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50  mt-5">
+  <div class="container text-center">
+    <small>Copyright &copy; Rizwan</small>
+  </div>
+</footer>
